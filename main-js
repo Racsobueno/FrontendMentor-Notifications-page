@@ -1,0 +1,28 @@
+const markAll = document.querySelector('#mark-all');
+const numberElement = document.querySelector('#number');
+const posts = document.querySelectorAll('.post');
+
+posts.forEach(post => {
+    post.addEventListener('click',()=>{
+        post.querySelector('.not-read').classList.remove('not-read')
+
+        updateNotifications();
+    })
+});
+
+markAll.addEventListener('click', ()=>{
+    console.log('boton presionado');
+
+    const notReadElemets = document.querySelectorAll('.not-read');
+
+    notReadElemets.forEach(notReadElemet => {
+        notReadElemet.classList.remove('not-read')
+    });
+
+    updateNotifications();
+})
+
+const updateNotifications = () => {
+    const notReadElemetsActual = document.querySelectorAll('.not-read');
+    numberElement.innerText = notReadElemetsActual.length;
+}
